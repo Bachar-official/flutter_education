@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_education/custom_scroll_view.dart';
 import 'package:flutter_education/grid_view.dart';
 import 'package:flutter_education/list_view.dart';
 import 'package:flutter_education/page_view.dart';
@@ -49,13 +50,15 @@ class _MyHomePageState extends State<MyHomePage> {
           NavigationDestination(icon: Icon(Icons.add_to_home_screen_sharp), label: 'ListView'),
           NavigationDestination(icon: Icon(Icons.add_to_home_screen_sharp), label: 'GridView'),
           NavigationDestination(icon: Icon(Icons.add_to_home_screen_sharp), label: 'PageView'),
+          NavigationDestination(icon: Icon(Icons.add_to_home_screen_sharp), label: 'CustomScrollView'),
         ],
       ),
       body: [
         SingleScroll(),
         ListViewExample(),
         GridViewExample(),
-        PageViewExample()
+        PageViewExample(),
+        CustomScrollExample()
       ][pageNumber],
     );
   }
