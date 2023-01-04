@@ -41,6 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
+        selectedIndex: pageNumber,
         onDestinationSelected: setPage,
         destinations: const [
           NavigationDestination(icon: Icon(Icons.adb_sharp), label: 'Future'),
