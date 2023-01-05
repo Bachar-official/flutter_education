@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_education/animation.dart';
 import 'package:flutter_education/data_transfer.dart';
+import 'package:flutter_education/from_routes/route1.dart';
 import 'package:flutter_education/navigator.dart';
 import 'package:flutter_education/routes.dart';
 
+import 'from_routes/route2.dart';
+
 void main() {
   runApp(const MyApp());
+}
+
+MaterialPageRoute _buildRoute(WidgetBuilder builder, settings) {
+  return MaterialPageRoute(settings: settings, builder: builder);
+}
+
+Route<dynamic> generateRoute(RouteSettings settings) {
+  switch (settings.name) {
+    case '/route1': return _buildRoute((context) => Route1Example(), settings);
+    case '/route2': return _buildRoute((context) => Route2Example(), settings);
+    default: throw Exception('Unknown route: ${settings.name}');
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -18,6 +33,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(),
+      onGenerateRoute: generateRoute,
     );
   }
 }
