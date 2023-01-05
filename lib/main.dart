@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_education/animation.dart';
+import 'package:flutter_education/data_transfer.dart';
+import 'package:flutter_education/navigator.dart';
+import 'package:flutter_education/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,54 +17,45 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int page = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  void setPage(int newPage) {
+    page = newPage;
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: page,
+        onDestinationSelected: setPage,
+        destinations: const [
+          NavigationDestination(icon: Icon(Icons.add), label: 'Navigator'),
+          NavigationDestination(icon: Icon(Icons.add), label: 'Routes'),
+          NavigationDestination(icon: Icon(Icons.add), label: 'Data transfer'),
+          NavigationDestination(icon: Icon(Icons.add), label: 'Animation'),
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      body: [
+        NavigatorExample(),
+        RoutesExample(),
+        DataTransferExample(),
+        AnimationExample()
+      ][page],
     );
   }
 }
