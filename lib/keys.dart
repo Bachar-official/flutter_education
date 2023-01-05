@@ -14,7 +14,7 @@ class _KeysExampleState extends State<KeysExample> {
   List<Widget> containers = [StatefulColorfulTile(), StatefulColorfulTile()];
 
   void swapContainers() {
-    containers.insert(0, containers.removeAt(0)); //Не замена, а модификация
+    containers.insert(0, containers.removeAt(1)); //Не замена, а модификация
     setState(() {});
   }
 
