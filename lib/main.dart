@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_education/animation.dart';
 import 'package:flutter_education/data_transfer.dart';
+import 'package:flutter_education/data_transfer/data_receiver_example.dart';
 import 'package:flutter_education/from_routes/route1.dart';
 import 'package:flutter_education/navigator.dart';
 import 'package:flutter_education/routes.dart';
@@ -19,6 +20,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case '/route1': return _buildRoute((context) => Route1Example(), settings);
     case '/route2': return _buildRoute((context) => Route2Example(), settings);
+    case '/transfer': return _buildRoute((context) => DataTransferReceiver(), settings);
     default: throw Exception('Unknown route: ${settings.name}');
   }
 }

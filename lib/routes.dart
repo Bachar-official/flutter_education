@@ -22,7 +22,7 @@ class RoutesExample extends StatelessWidget {
             ),
             TextButton(
               onPressed: () => Navigator.pushNamed(context, '/exception'),
-              child: const Text('Сломать приложение'),
+              child: const Text('Перейти на несуществующий путь'),
             ),
           ],
         ),
