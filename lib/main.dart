@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_education/async_widget.dart';
 import 'package:flutter_education/builders.dart';
 import 'package:flutter_education/keys.dart';
 
@@ -47,14 +46,11 @@ class _MyHomePageState extends State<MyHomePage> {
           NavigationDestination(icon: Icon(Icons.access_time), label: 'Keys'),
           NavigationDestination(
               icon: Icon(Icons.access_time), label: 'Builders'),
-          NavigationDestination(
-              icon: Icon(Icons.access_time), label: 'Async Widget'),
         ],
       ),
       body: [
         KeysExample(),
         BuildersExample(),
-        AsyncWidgetExample(),
       ][pageNumber],
     );
   }
