@@ -99,51 +99,49 @@ class CupertinoExample extends StatelessWidget {
                 onPressed: () => _showTimePicker(context),
                 child: const Text('Показать TimePicker'),
               ),
-              Center(
-                child: SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: CupertinoContextMenu(
-                    actions: <Widget>[
-                      CupertinoContextMenuAction(
-                        onPressed: () {
-                          debugPrint('Скопировано');
-                          Navigator.pop(context);
-                        },
-                        isDefaultAction: true,
-                        trailingIcon: CupertinoIcons.doc_on_clipboard_fill,
-                        child: const Text('Copy'),
-                      ),
-                      CupertinoContextMenuAction(
-                        onPressed: () {
-                          debugPrint('Расшарено');
-                          Navigator.pop(context);
-                        },
-                        trailingIcon: CupertinoIcons.share,
-                        child: const Text('Share'),
-                      ),
-                      CupertinoContextMenuAction(
-                        onPressed: () {
-                          debugPrint('Добавлено в избранные');
-                          Navigator.pop(context);
-                        },
-                        trailingIcon: CupertinoIcons.heart,
-                        child: const Text('Favorite'),
-                      ),
-                      CupertinoContextMenuAction(
-                        onPressed: () {
-                          debugPrint('Удалено');
-                          Navigator.pop(context);
-                        },
-                        isDestructiveAction: true,
-                        trailingIcon: CupertinoIcons.delete,
-                        child: const Text('Delete'),
-                      ),
-                    ],
-                    child: Container(
-                      color: CupertinoColors.systemYellow,
-                      child: const FlutterLogo(size: 500.0),
+              SizedBox(
+                width: 100,
+                height: 100,
+                child: CupertinoContextMenu(
+                  actions: <Widget>[
+                    CupertinoContextMenuAction(
+                      onPressed: () {
+                        debugPrint('Скопировано');
+                        Navigator.pop(context);
+                      },
+                      isDefaultAction: true,
+                      trailingIcon: CupertinoIcons.doc_on_clipboard_fill,
+                      child: const Text('Копировать'),
                     ),
+                    CupertinoContextMenuAction(
+                      onPressed: () {
+                        debugPrint('Расшарено');
+                        Navigator.pop(context);
+                      },
+                      trailingIcon: CupertinoIcons.share,
+                      child: const Text('Расшарить'),
+                    ),
+                    CupertinoContextMenuAction(
+                      onPressed: () {
+                        debugPrint('Добавлено в избранные');
+                        Navigator.pop(context);
+                      },
+                      trailingIcon: CupertinoIcons.heart,
+                      child: const Text('В избранное'),
+                    ),
+                    CupertinoContextMenuAction(
+                      onPressed: () {
+                        debugPrint('Удалено');
+                        Navigator.pop(context);
+                      },
+                      isDestructiveAction: true,
+                      trailingIcon: CupertinoIcons.delete,
+                      child: const Text('Удалить'),
+                    ),
+                  ],
+                  child: Container(
+                    color: CupertinoColors.systemYellow,
+                    child: const FlutterLogo(size: 500.0),
                   ),
                 ),
               ),
