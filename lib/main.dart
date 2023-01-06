@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_education/animation.dart';
 import 'package:flutter_education/dialogs.dart';
+import 'package:flutter_education/menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,11 +44,13 @@ class _MyHomePageState extends State<MyHomePage> {
         onDestinationSelected: setPage,
         destinations: const [
           NavigationDestination(icon: Icon(Icons.dialer_sip_outlined), label: 'Dialogs',),
+          NavigationDestination(icon: Icon(Icons.dialer_sip_outlined), label: 'Menu',),
           NavigationDestination(icon: Icon(Icons.dialer_sip_outlined), label: 'Animations',),
         ],
       ),
       body: [
         DialogsExample(),
+        MenuExample(),
         DialogsAnimationExample()
       ][page],
     );
