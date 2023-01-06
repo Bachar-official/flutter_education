@@ -3,8 +3,11 @@ import 'package:flutter_education/database.dart';
 import 'package:flutter_education/file.dart';
 import 'package:flutter_education/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.openBox('settings');
   runApp(const MyApp());
