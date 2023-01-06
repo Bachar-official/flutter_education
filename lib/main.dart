@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_education/database.dart';
 import 'package:flutter_education/file.dart';
 import 'package:flutter_education/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  Hive.openBox('settings');
   runApp(const MyApp());
 }
 
