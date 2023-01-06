@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_education/animation.dart';
+import 'package:flutter_education/cupertino.dart';
 import 'package:flutter_education/dialogs.dart';
 import 'package:flutter_education/menu.dart';
 
@@ -43,14 +44,16 @@ class _MyHomePageState extends State<MyHomePage> {
         selectedIndex: page,
         onDestinationSelected: setPage,
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.dialer_sip_outlined), label: 'Dialogs',),
-          NavigationDestination(icon: Icon(Icons.dialer_sip_outlined), label: 'Menu',),
-          NavigationDestination(icon: Icon(Icons.dialer_sip_outlined), label: 'Animations',),
+          NavigationDestination(icon: Icon(Icons.android), label: 'Dialogs',),
+          NavigationDestination(icon: Icon(Icons.android), label: 'Menu',),
+          NavigationDestination(icon: Icon(Icons.apple), label: 'Cupertino',),
+          NavigationDestination(icon: Icon(Icons.animation), label: 'Animations',),
         ],
       ),
       body: [
         DialogsExample(),
         MenuExample(),
+        CupertinoExample(),
         DialogsAnimationExample()
       ][page],
     );
