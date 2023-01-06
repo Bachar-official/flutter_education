@@ -46,22 +46,24 @@ class CupertinoExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Cupertino'),
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Cupertino'),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            TextButton(
-              onPressed: () => _showPopupSurface(context),
-              child: const Text('Показать простое сообщение'),
-            ),
-            TextButton(
-              onPressed: () => _showModal(context),
-              child: const Text('Показать диалог'),
-            ),
-          ],
+      child: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              CupertinoButton(
+                onPressed: () => _showPopupSurface(context),
+                child: const Text('Показать простое сообщение'),
+              ),
+              CupertinoButton(
+                onPressed: () => _showModal(context),
+                child: const Text('Показать диалог'),
+              ),
+            ],
+          ),
         ),
       ),
     );
