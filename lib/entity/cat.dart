@@ -16,6 +16,8 @@ class Cat {
         'age': age,
       };
 
+  String toSqlValues() => 'VALUES ($id, \'$name\', $age)';
+
   @override
   String toString() => 'Cat (id=$id, name=$name, age=$age)';
 }

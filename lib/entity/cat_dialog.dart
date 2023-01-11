@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'cat.dart';
 
 class CatDialog extends StatefulWidget {
-  const CatDialog({Key? key, required this.insertCat}) : super(key: key);
+  const CatDialog(
+      {Key? key, required this.insertCat, required this.insertNativeCat})
+      : super(key: key);
   final Future<void> Function(Cat) insertCat;
+  final Future<void> Function(Cat) insertNativeCat;
 
   @override
   State<CatDialog> createState() => _CatDialogState();
@@ -60,6 +63,15 @@ class _CatDialogState extends State<CatDialog> {
               Navigator.pop(context);
             },
             child: const Text('Добавить'),
+          ),
+          TextButton(
+            onPressed: () async {
+              await widget.insertNativeCat(
+                Cat(id: id, name: name, age: age),
+              );
+              Navigator.pop(context);
+            },
+            child: const Text('+ нативно'),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context),

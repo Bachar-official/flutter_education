@@ -14,7 +14,8 @@ class DatabaseExample extends StatefulWidget {
 
 class _DatabaseExampleState extends State<DatabaseExample> {
   late final Database database;
-  late String databasePath = '';
+  String databasePath = '';
+  String search = '';
   List<Cat> cats = [];
 
   @override
@@ -36,11 +37,29 @@ class _DatabaseExampleState extends State<DatabaseExample> {
     ).then((result) => database = result);
   }
 
+  void searchCats(String query) async {
+    if (query.isEmpty) {
+      await getCats();
+    } else {
+      search = query;
+      List<Map<String, dynamic>> maps =
+          await database.rawQuery('SELECT * FROM cats WHERE name LIKE \'$search%\'');
+      cats = maps.map((map) => Cat.fromMap(map)).toList();
+      setState(() {});
+    }
+  }
+
   Future<void> insertCat(Cat cat) async {
     await database.insert('cats', cat.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
     await getCats();
     setState(() {});
+  }
+
+  Future<void> insertNativeCat(Cat cat) async {
+    await database
+        .execute('INSERT INTO cats (id, name, age) ${cat.toSqlValues()}');
+    await getCats();
   }
 
   Future<void> getCats() async {
@@ -49,11 +68,11 @@ class _DatabaseExampleState extends State<DatabaseExample> {
     setState(() {});
   }
 
-  Future<void> updateDog(Cat cat) async {
+  Future<void> updateCat(Cat cat) async {
     await database.update(
       'cats',
       cat.toMap(),
-      // Удостовериться, что собака существует
+      // Удостовериться, что кот существует
       where: 'id = ?',
       // Прокинуть id кота как whereArg чтобы предотвратить SQL инъекции
       whereArgs: [cat.id],
@@ -74,7 +93,10 @@ class _DatabaseExampleState extends State<DatabaseExample> {
   void _showCatDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) => CatDialog(insertCat: insertCat),
+      builder: (context) => CatDialog(
+        insertCat: insertCat,
+        insertNativeCat: insertNativeCat,
+      ),
     );
   }
 
@@ -93,6 +115,11 @@ class _DatabaseExampleState extends State<DatabaseExample> {
             onPressed: () async => await getCats(),
           ),
         ],
+        bottom: PreferredSize(
+            preferredSize: const Size(double.infinity, 50),
+            child: TextFormField(
+              onChanged: searchCats,
+            )),
       ),
       body: ListView.builder(
         itemCount: cats.length,
