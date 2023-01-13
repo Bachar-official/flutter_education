@@ -34,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int pageNumber = 0;
 
+  /// Изменяет текущую страницу, используя параметр [number].
   void setPage(int number) {
     pageNumber = number;
     setState(() {});
