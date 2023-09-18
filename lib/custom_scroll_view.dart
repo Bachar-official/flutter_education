@@ -23,11 +23,19 @@ class CustomScrollExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('CustomScrollView'),
-      ),
       body: CustomScrollView(
         slivers: [
+          SliverAppBar(
+            expandedHeight: 220.0,
+            flexibleSpace: FlexibleSpaceBar(
+                title: const Text('CustomScrollView'),
+                centerTitle: true,
+                background: Image.network(
+                  'https://avatars.mds.yandex.net/i?id=8203ed10fc28ec932a70f40628a931b9_sr-5312571-images-thumbs&n=13',
+                  fit: BoxFit.cover,
+                )
+            ),
+          ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) => greyItems[index],
