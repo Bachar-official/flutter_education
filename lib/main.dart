@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_education/explicit.dart';
+import 'package:flutter_education/implicit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,39 +30,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _page = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  void onSelected(int page) {
+    _page = page;
+    setState(() => {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: onSelected,
+        selectedIndex: _page,
+        destinations: const [
+          NavigationDestination(icon: Icon(Icons.abc), label: 'Implicit'),
+          NavigationDestination(icon: Icon(Icons.abc), label: 'Explicit'),
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      body: const [Implicit(), Explicit()][_page],
     );
   }
 }
