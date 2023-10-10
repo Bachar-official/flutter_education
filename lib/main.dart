@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_education/explicit.dart';
 import 'package:flutter_education/implicit.dart';
+import 'package:flutter_education/lottie.dart';
 import 'package:flutter_education/rive_animation.dart';
 
 void main() {
@@ -48,9 +49,15 @@ class _MyHomePageState extends State<MyHomePage> {
           NavigationDestination(icon: Icon(Icons.abc), label: 'Implicit'),
           NavigationDestination(icon: Icon(Icons.abc), label: 'Explicit'),
           NavigationDestination(icon: Icon(Icons.abc), label: 'Rive'),
+          NavigationDestination(icon: Icon(Icons.abc), label: 'Lottie'),
         ],
       ),
-      body: const [Implicit(), Explicit(), RiveAnimationScreen()][_page],
+      body: const [
+        Implicit(),
+        Explicit(),
+        RiveAnimationScreen(),
+        LottieScreen()
+      ][_page],
     );
   }
 }

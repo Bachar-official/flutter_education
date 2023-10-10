@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 const duration = Duration(milliseconds: 500);
 const logo = FlutterLogo();
