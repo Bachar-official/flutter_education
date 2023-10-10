@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_education/explicit.dart';
 import 'package:flutter_education/implicit.dart';
+import 'package:flutter_education/rive_animation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,9 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
         destinations: const [
           NavigationDestination(icon: Icon(Icons.abc), label: 'Implicit'),
           NavigationDestination(icon: Icon(Icons.abc), label: 'Explicit'),
+          NavigationDestination(icon: Icon(Icons.abc), label: 'Rive'),
         ],
       ),
-      body: const [Implicit(), Explicit()][_page],
+      body: const [Implicit(), Explicit(), RiveAnimationScreen()][_page],
     );
   }
 }
